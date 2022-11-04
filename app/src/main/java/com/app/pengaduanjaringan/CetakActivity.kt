@@ -56,7 +56,7 @@ class CetakActivity : AppCompatActivity() {
                     }
                 }
 
-                myViewModel.getDataCetak(globarStartDate, globarEndDate).observe(this@CetakActivity) {
+                myViewModel.getDataCetak(globarStartDate, globarEndDate,3).observe(this@CetakActivity) {
                     myWebView.loadUrl("about:blank")
                     setData(it)
                 }
@@ -72,7 +72,7 @@ class CetakActivity : AppCompatActivity() {
                   <style type="text/css">
                     table,th, td{
                      font-size: 2px;
-                        padding: 5px;
+                        padding: 2px;
                     border: 1px solid black;
                     border-collapse: collapse; } 
                     th, td{ text-align:center; }
@@ -153,6 +153,7 @@ class CetakActivity : AppCompatActivity() {
         if (item.itemId==R.id.filter){
             val view = findViewById<View>(R.id.filter)
             val popupMenu = PopupMenu(this, view)
+            popupMenu.menu.add("Semua")
             popupMenu.menu.add("Menunggu Respon")
             popupMenu.menu.add("Sedang ditangani")
             popupMenu.menu.add("Selesai ditangani")
@@ -160,6 +161,9 @@ class CetakActivity : AppCompatActivity() {
             popupMenu.show()
             popupMenu.setOnMenuItemClickListener {
                 when(it.title) {
+                    "Semua" ->{
+                        filterByStatus(3)
+                    }
                     "Menunggu Respon" ->{
                         filterByStatus(0)
                     }
@@ -182,12 +186,12 @@ class CetakActivity : AppCompatActivity() {
                 override fun onSelected(startDate: Long, endDate: Long) {
                     globarStartDate = startDate
                     globarEndDate = endDate
-                    myViewModel.getDataCetak(startDate, endDate).observe(this@CetakActivity) {
+                    myViewModel.getDataCetak(startDate, endDate,3).observe(this@CetakActivity) {
                         myWebView.loadUrl("about:blank")
-//                        binding.txtTanggal.text =
-//                            "Tanggal : " + Constant.convertToyyyMMdd(startDate) + " - " + Constant.convertToyyyMMdd(
-//                                endDate
-//                            )
+                        binding.toolbar.subtitle =
+                          Constant.convertToyyyMMdd(startDate) + " - " + Constant.convertToyyyMMdd(
+                                endDate
+                            )
 //                        binding.txtStatus.text = "Status : Semua"
                         setData(it)
                     }
@@ -225,8 +229,8 @@ class CetakActivity : AppCompatActivity() {
 
     fun filterByStatus(status: Int){
         myWebView.loadUrl("about:blank")
-        myViewModel.getDataCetak2(globarStartDate, globarEndDate,status).observe(this){
-            Log.d(TAG, "filterByStatus: ")
+        myViewModel.getDataCetak(globarStartDate, globarEndDate,status).observe(this){
+            Log.d(TAG, "filterByStatus: "+status)
             setData(it)
         }
     }

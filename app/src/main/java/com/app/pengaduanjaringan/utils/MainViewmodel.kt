@@ -88,43 +88,64 @@ class MainViewmodel(application: Application) : AndroidViewModel(application) {
     private var lstCetak = MutableLiveData<ArrayList<PengaduanModel>>()
     private var newlistCetak = arrayListOf<PengaduanModel>()
 
-    fun getDataCetak2(startDate: Long, endDate: Long, status :Int): MutableLiveData<ArrayList<PengaduanModel>> {
-        newlistCetak.clear()
-        db.collection("pengaduan")
-            .whereEqualTo("status", status)
-            .whereGreaterThan("tanggal",startDate)
-            .whereLessThan("tanggal", endDate)
-            .orderBy("tanggal", Query.Direction.DESCENDING)
-            .addSnapshotListener { value, error ->
-                if (value != null) {
-                    for (document in value) {
-                        val penhaduan = document.toObject(PengaduanModel::class.java)
-                        penhaduan.id = document.id
-                        newlistCetak.add(penhaduan)
-                    }
-                }
-                lstCetak.value=newlistCetak
-            }
+//    fun getDataCetak2(startDate: Long, endDate: Long, status :Int): MutableLiveData<ArrayList<PengaduanModel>> {
+//        newlistCetak.clear()
+//        lstCetak.value?.clear()
+//        db.collection("pengaduan")
+//            .whereEqualTo("status", status)
+//            .whereGreaterThan("tanggal",startDate)
+//            .whereLessThan("tanggal", endDate)
+//            .orderBy("tanggal", Query.Direction.DESCENDING)
+//            .addSnapshotListener { value, error ->
+//                if (value != null) {
+//                    for (document in value) {
+//                        val penhaduan = document.toObject(PengaduanModel::class.java)
+//                        penhaduan.id = document.id
+//                        newlistCetak.add(penhaduan)
+//                    }
+//                }
+//                lstCetak.setValue(newlistCetak)
+//            }
+//
+//        return lstCetak
+//    }
 
-        return lstCetak
-    }
-
-    fun getDataCetak(startDate: Long, endDate: Long): MutableLiveData<ArrayList<PengaduanModel>> {
+    fun getDataCetak(startDate: Long, endDate: Long,status :Int): MutableLiveData<ArrayList<PengaduanModel>> {
         newlistCetak.clear()
-        db.collection("pengaduan")
-            .whereGreaterThan("tanggal",startDate)
-            .whereLessThan("tanggal", endDate)
-            .orderBy("tanggal", Query.Direction.DESCENDING)
-            .addSnapshotListener { value, error ->
-                if (value != null) {
-                    for (document in value) {
-                        val penhaduan = document.toObject(PengaduanModel::class.java)
-                        penhaduan.id = document.id
-                        newlistCetak.add(penhaduan)
+      //  lstCetak.value?.clear()
+        if (status==3) {
+            db.collection("pengaduan")
+                .whereGreaterThan("tanggal",startDate)
+                .whereLessThan("tanggal", endDate)
+                .orderBy("tanggal", Query.Direction.DESCENDING)
+                .get().addOnSuccessListener {
+                    for (d in it.documents){
+                        val data = d.toObject(PengaduanModel::class.java)
+                        if (data != null) {
+                            newlistCetak.add(data)
+                        }
                     }
+                    lstCetak.setValue(newlistCetak)
                 }
-                lstCetak.value=newlistCetak
-            }
+        }else{
+            Log.d(TAG, "getDataCetak: "+status)
+            db.collection("pengaduan")
+               // .whereEqualTo("status", status)
+                .whereGreaterThan("tanggal",startDate)
+                .whereLessThan("tanggal", endDate)
+                .get().addOnSuccessListener {
+                    for (d in it.documents){
+                        val data = d.toObject(PengaduanModel::class.java)
+                        if (data != null) {
+                            if (data.status==status) {
+                                newlistCetak.add(data)
+                            }
+                        }
+                    }
+                    lstCetak.setValue(newlistCetak)
+                }
+        }
+
 
         return lstCetak
     }

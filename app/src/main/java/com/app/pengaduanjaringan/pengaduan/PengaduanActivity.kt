@@ -147,7 +147,7 @@ class PengaduanActivity : AppCompatActivity(), PengaduanAdapter.CallBack {
                             if (menuItem.getTitle().equals("Proses")) {
                                 val pengaduan = PengaduanModel(
                                     null,
-                                    Constant.getIdUser(this@PengaduanActivity)!!,
+                                    sd.idUser,
                                     sd.tanggal,
                                     sd.judul,
                                     sd.isi,sd.alamat,1, true
@@ -161,7 +161,7 @@ class PengaduanActivity : AppCompatActivity(), PengaduanAdapter.CallBack {
 
                                 val pengaduan = PengaduanModel(
                                     null,
-                                    Constant.getIdUser(this@PengaduanActivity)!!,
+                                    sd.idUser,
                                     sd.tanggal,
                                     sd.judul,
                                     sd.isi,sd.alamat,2, true

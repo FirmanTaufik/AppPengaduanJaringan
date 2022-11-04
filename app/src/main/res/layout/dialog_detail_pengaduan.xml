@@ -22,7 +22,7 @@
 
             <TextView
                 android:text="Tanggal"
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -40,7 +40,7 @@
 
             <TextView
                 android:text="Pelapor"
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -59,7 +59,7 @@
 
             <TextView
                 android:text="Judul"
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -79,7 +79,7 @@
 
             <TextView
                 android:text="Isi"
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
@@ -99,7 +99,7 @@
 
             <TextView
                 android:text="Alamat"
-                android:layout_width="100dp"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"/>
 
             <TextView
