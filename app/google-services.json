@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "589775826158",
+    "project_id": "fkopitezz-c249c",
+    "storage_bucket": "fkopitezz-c249c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589775826158:android:aa53ecca0a537bb2f397ff",
+        "android_client_info": {
+          "package_name": "com.app.pengaduanjaringan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "589775826158-pbn79o99gua9ajl1fqoj48eb5dsh36gl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.pengaduanjaringan",
+            "certificate_hash": "16f4824f7acb658bdef9ebe7668b0c2e9fa594cf"
+          }
+        },
+        {
+          "client_id": "589775826158-q55jf636lr5e84s60ii0ik005mq10sii.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyeCslU2FoTvjiCoeRtIHtFThjYVxrauw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "589775826158-q55jf636lr5e84s60ii0ik005mq10sii.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

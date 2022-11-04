@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:padding="15dp"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CustomerActivity">
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/ic_baseline_account_circle_24"
+            app:civ_circle_background_color="@color/primary" />
+        <LinearLayout
+            android:id="@+id/linearProfil"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_marginLeft="8dp"
+            android:layout_toRightOf="@+id/image"
+            android:layout_toLeftOf="@+id/imageBtnLogout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:textSize="20dp"
+                android:id="@+id/txtName"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="@string/app_name"
+                android:textStyle="bold" />
+            <TextView
+                android:ellipsize="end"
+                android:id="@+id/txtEmail"
+                android:maxLines="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"  />
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/imageBtnLogout"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_logout"
+            app:fabSize="mini"
+            app:tint="?android:attr/colorBackground" />
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtUsername"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:text=""
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <ImageView
+            android:layout_weight="1"
+            android:src="@drawable/vec_customer_welcome"
+            android:layout_width="0dp"
+            android:layout_height="150dp"/>
+    </LinearLayout>
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center_vertical"
+        android:textStyle="bold"
+        android:text="Selamat datang di sistem pengaduan jaringan Diskominfo, silahkan adukan permasalahan jaringan anda kepada kami."
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <LinearLayout
+        android:layout_marginTop="15dp"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_marginRight="8dp"
+            android:textStyle="bold"
+            android:text="Klik tombol tambah pengaduan untuk mengirimkan data pengaduan."
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:layout_weight="1"
+            android:onClick="toPengaudanCustomer"
+            android:layout_gravity="center_vertical"
+            android:text="Pengaduan"
+            app:icon="@drawable/ic_baseline_playlist_add_24"
+            android:textAlignment="center"
+            android:textColor="?android:attr/colorBackground"
+            android:textAllCaps="false"
+            app:iconTint="?android:attr/colorBackground"
+            android:textSize="13dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</LinearLayout>

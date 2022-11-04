@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">App Pengaduan Jaringan</string>
+
+    <string name="notification_channel_id">233</string>
+    <string name="notification_channel_name">channelname</string>
+    <string name="fcm_key">AAAAiVFg7O4:APA91bFHwTkz55-3K_R59OvQP-OF-h_SaGOQjDSrzgJNVfU59psm026zIEbJ4V86mMjVAb_2GMnXpWIo-nQc2K0mrxJLdnlUdPZI0Dz8CCvx7hjiVUAytHqAqt_ObY0bwCtXLp5V0uuT</string>
+    <string name="subscribe_key">subasadmin</string>
+</resources>
