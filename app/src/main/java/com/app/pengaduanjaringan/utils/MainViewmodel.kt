@@ -88,42 +88,42 @@ class MainViewmodel(application: Application) : AndroidViewModel(application) {
     private var lstCetak = MutableLiveData<ArrayList<PengaduanModel>>()
     private var newlistCetak = arrayListOf<PengaduanModel>()
 
-    fun getDataCetak(startDate: Long, endDate: Long, status :Int): MutableLiveData<ArrayList<PengaduanModel>> {
+    fun getDataCetak2(startDate: Long, endDate: Long, status :Int): MutableLiveData<ArrayList<PengaduanModel>> {
+        newlistCetak.clear()
         db.collection("pengaduan")
             .whereEqualTo("status", status)
             .whereGreaterThan("tanggal",startDate)
             .whereLessThan("tanggal", endDate)
             .orderBy("tanggal", Query.Direction.DESCENDING)
             .addSnapshotListener { value, error ->
-                newlistCetak.clear()
                 if (value != null) {
                     for (document in value) {
                         val penhaduan = document.toObject(PengaduanModel::class.java)
                         penhaduan.id = document.id
                         newlistCetak.add(penhaduan)
-                        lstCetak.value=newlistCetak
                     }
                 }
+                lstCetak.value=newlistCetak
             }
 
         return lstCetak
     }
 
     fun getDataCetak(startDate: Long, endDate: Long): MutableLiveData<ArrayList<PengaduanModel>> {
+        newlistCetak.clear()
         db.collection("pengaduan")
             .whereGreaterThan("tanggal",startDate)
             .whereLessThan("tanggal", endDate)
             .orderBy("tanggal", Query.Direction.DESCENDING)
             .addSnapshotListener { value, error ->
-                newlistCetak.clear()
                 if (value != null) {
                     for (document in value) {
                         val penhaduan = document.toObject(PengaduanModel::class.java)
                         penhaduan.id = document.id
                         newlistCetak.add(penhaduan)
-                        lstCetak.value=newlistCetak
                     }
                 }
+                lstCetak.value=newlistCetak
             }
 
         return lstCetak
